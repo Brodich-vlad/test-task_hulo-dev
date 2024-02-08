@@ -8,8 +8,20 @@ const carousel = document.getElementById('carousel');
 const modal = document.getElementById('modal');
 const modal_content = document.getElementById('modal_content');
 
+// Медіа запит Ширина екрану користувача.
+const clientWidth = document.documentElement.clientWidth;
+  
+const quantitySliderItem = (width) => {
+  console.log(width);
+  if (width > 820) {
+    return 4
+  } else if (width < 820 && width > 450) {
+    return 2;
+  }else return 1
+}
+
 // Вивід слайденра на сторінку.
-createCarousel(SLIDER_ITEMS, carousel); 
+createCarousel(SLIDER_ITEMS, carousel, quantitySliderItem(clientWidth)); 
 
 // Функція відчинення модалки.
 export function oppenModal(id) {
